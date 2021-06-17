@@ -8,7 +8,7 @@ const path = require("path");
 module.exports = function (env, argv) {
   return {
     mode: "production",
-    entry: ["./src/NoteManager.js"],
+    entry: ["./demo/app.js"],
     optimization: {
       minimizer: [new OptimizeCSSAssetsPlugin()],
     },
