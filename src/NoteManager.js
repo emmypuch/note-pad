@@ -5,6 +5,9 @@ export default class NoteManager {
     this.el = el;
     this.notes = notes.map((note) => new Note(note, this));
 
+    this.onNewNote = () => {};
+    this.onNoteChange = () => {};
+    this.onNewRemove = () => {};
     this.renderNotes();
   }
 
@@ -19,5 +22,19 @@ export default class NoteManager {
   removeNote(note) {
     this.notes.splice(this.notes.indexOf(note), 1);
     this.renderNotes();
+  }
+
+  addNote(note) {
+    const noteObj = new Note(note, this);
+    this.notes.push(noteObj);
+    this.renderNotes();
+    this.onNewNote(noteObj);
+  }
+
+  prependNote(note) {
+    const noteObj = new Note(note, this);
+    this.notes.unshift(noteObj);
+    this.renderNotes();
+    this.onNewNote(noteObj);
   }
 }

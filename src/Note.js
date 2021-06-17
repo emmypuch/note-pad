@@ -38,8 +38,19 @@ export default class Note {
 
   attachEventListeners() {
     const btnClose = this.el.querySelector(".tc-note-close");
-    btnClose.onclick = () => {
+
+    btnClose.addEventListener("click", () => {
       this.noteManager.removeNote(this);
-    };
+    });
+    const title = this.el.querySelector(".tc-note-title");
+    title.addEventListener("input", (ev) => {
+      this.title = ev.target.innerText;
+      this.noteManager.onNoteChange(this);
+    });
+    const body = this.el.querySelector(".tc-note-body");
+    body.addEventListener("input", (ev) => {
+      this.body = ev.target.innerText;
+      this.noteManager.onNoteChange(this);
+    });
   }
 }
