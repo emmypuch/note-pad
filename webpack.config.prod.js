@@ -18,6 +18,9 @@ module.exports = function (env, argv) {
         filename: "[name].css",
         chunkFilename: "[id].css",
       }),
+      new HtmlWebpackPlugin({
+        template: path.resolve("./demo/index.html"),
+      }),
       new MinifyPlugin(),
     ],
     module: {
